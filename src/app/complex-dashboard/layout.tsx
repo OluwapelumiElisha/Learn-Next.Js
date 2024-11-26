@@ -3,15 +3,18 @@ export default function DashboardLayout ({
     children,
     users,
     revenue,
-    notification
+    notification,
+    login
 }:{
     children: React.ReactNode;
     users : React.ReactNode;
     revenue : React.ReactNode;
     notification : React.ReactNode
+    login: React.ReactNode
 }) {
-    return <>
-    <div>
+    const isloggedIn = false
+    return isloggedIn ? (
+        <div>
         <div> {children} </div>
         <div className="flex">
             <div className="flex flex-col">
@@ -19,12 +22,11 @@ export default function DashboardLayout ({
                 <div>{revenue}</div>
 
             </div>
-            <div className="">{notification}</div>
+            <div className="flex flex-1">{notification}</div>
         </div>
     </div>
-    
-    {/* <h1>Complex Dashboard</h1> */}
-
-    </>
+    ) : (
+        login
+    );
 
 } 
